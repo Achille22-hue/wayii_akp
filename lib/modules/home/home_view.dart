@@ -9,6 +9,7 @@ import 'package:wayii/data/constants/app_typography.dart';
 import 'package:wayii/data/helpers/data.dart';
 import 'package:wayii/modules/category/category_view.dart';
 import 'package:wayii/modules/events/event_card.dart';
+import 'package:wayii/modules/events/event_month.dart';
 import 'package:wayii/modules/home/components/home_appBar.dart';
 import 'package:wayii/modules/home/components/home_category_card.dart';
 import 'package:wayii/widgets/fields/search_field.dart';
@@ -69,7 +70,7 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 Text(
                   'Catégories',
-                  style: AppTypography.kSemiBold16
+                  style: AppTypography.kFuturaSemiBold20
                       .copyWith(color: AppColors.kWhite),
                 ),
                 const Spacer(),
@@ -106,12 +107,14 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 Text(
                   'Evénements du mois',
-                  style: AppTypography.kSemiBold16
+                  style: AppTypography.kFuturaSemiBold20
                       .copyWith(color: AppColors.kWhite),
                 ),
                 const Spacer(),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to<Widget>(() => const EventMonthView());
+                  },
                   child: SvgPicture.asset(AppAssets.wLeftArrow),
                 ),
               ],

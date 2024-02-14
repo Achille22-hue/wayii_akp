@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:wayii/controllers/user_controllers.dart';
 import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
+import 'package:wayii/modules/lendingPage/lending_page.dart';
 import 'package:wayii/modules/onboarding/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,6 +16,8 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final UserController cs = Get.find<UserController>();
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -23,7 +27,11 @@ class _SplashViewState extends State<SplashView> {
   Future<void> loadAssetsAndNavigate() async {
     await precacheImages();
     Future.delayed(const Duration(seconds: 5), () {
-      Get.offAll<Widget>(() => const OnboardingView());
+      if (cs.isConnect.value) {
+        Get.to<Widget>(() => const LandingPage());
+      } else {
+        Get.offAll<Widget>(() => const OnboardingView());
+      }
     });
   }
 

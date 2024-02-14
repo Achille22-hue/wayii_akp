@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:wayii/auth/signin_view.dart';
+import 'package:wayii/controllers/user_controllers.dart';
 import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/data/constants/app_typography.dart';
@@ -17,6 +20,8 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  final UserController cc = Get.find<UserController>();
+
   int _currentIndex = 0;
   List<Widget> pages = [
     const HomeView(),
@@ -25,6 +30,17 @@ class _LandingPageState extends State<LandingPage> {
     const TicketView(),
     const ProfilView(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!cc.isConnect.value) {
+        Get.to<Widget>(() => const SignInView());
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +59,8 @@ class _LandingPageState extends State<LandingPage> {
           elevation: 0,
           selectedItemColor: AppColors.kPrimary,
           unselectedItemColor: Colors.white,
-          selectedLabelStyle: AppTypography.kLight10,
-          unselectedLabelStyle: AppTypography.kLight10,
+          selectedLabelStyle: AppTypography.kFuturaLight10,
+          unselectedLabelStyle: AppTypography.kFuturaLight10,
           currentIndex: _currentIndex,
           onTap: (value) {
             setState(() {

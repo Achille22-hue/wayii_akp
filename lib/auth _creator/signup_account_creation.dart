@@ -64,7 +64,7 @@ class _SignAccountCreationCreatorState
                     "Inscrivez-vous",
                     textAlign: TextAlign.right,
                     style:
-                        AppTypography.kSemiBold20.copyWith(color: Colors.white),
+                        AppTypography.kFuturaSemiBold20.copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 10.h),
                   Form(
@@ -160,7 +160,7 @@ class _SignAccountCreationCreatorState
                               child: Text(
                                 'Mot de passe oublié ?',
                                 textAlign: TextAlign.end,
-                                style: AppTypography.kMedium12
+                                style: AppTypography.kFuturaMedium12
                                     .copyWith(color: AppColors.kGrey70),
                               ),
                             ),
@@ -179,7 +179,7 @@ class _SignAccountCreationCreatorState
                             textAlign: TextAlign.center,
                             text: TextSpan(
                               text: 'Vous possédez déjà un compte? ',
-                              style: AppTypography.kMedium12
+                              style: AppTypography.kFuturaMedium12
                                   .copyWith(color: AppColors.kGrey70),
                               children: [
                                 TextSpan(
@@ -188,7 +188,7 @@ class _SignAccountCreationCreatorState
                                     ..onTap = () {
                                       Get.to<Widget>(() => const SignInView());
                                     },
-                                  style: AppTypography.kMedium12
+                                  style: AppTypography.kFuturaMedium12
                                       .copyWith(color: AppColors.kPrimary),
                                 ),
                               ],

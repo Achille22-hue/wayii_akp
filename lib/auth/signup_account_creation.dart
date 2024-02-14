@@ -70,7 +70,7 @@ class _SignAccountCreationState extends State<SignAccountCreation> {
                       Text(
                         "Inscrivez-vous",
                         textAlign: TextAlign.right,
-                        style: AppTypography.kSemiBold20
+                        style: AppTypography.kFuturaSemiBold20
                             .copyWith(color: Colors.white),
                       ),
                       SizedBox(width: 10.w),
@@ -180,7 +180,7 @@ class _SignAccountCreationState extends State<SignAccountCreation> {
                               child: Text(
                                 'Mot de passe oublié ?',
                                 textAlign: TextAlign.end,
-                                style: AppTypography.kMedium12
+                                style: AppTypography.kFuturaMedium12
                                     .copyWith(color: AppColors.kGrey70),
                               ),
                             ),
@@ -216,7 +216,7 @@ class _SignAccountCreationState extends State<SignAccountCreation> {
                             textAlign: TextAlign.center,
                             text: TextSpan(
                               text: 'Vous possédez déjà un compte? ',
-                              style: AppTypography.kMedium12
+                              style: AppTypography.kFuturaMedium12
                                   .copyWith(color: AppColors.kGrey70),
                               children: [
                                 TextSpan(
@@ -225,7 +225,7 @@ class _SignAccountCreationState extends State<SignAccountCreation> {
                                     ..onTap = () {
                                       Get.to<Widget>(() => const SignInView());
                                     },
-                                  style: AppTypography.kMedium12
+                                  style: AppTypography.kFuturaMedium12
                                       .copyWith(color: AppColors.kPrimary),
                                 ),
                               ],

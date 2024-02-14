@@ -51,7 +51,7 @@ class EventCard extends StatelessWidget {
             event['event_name'],
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: AppTypography.kMedium14.copyWith(color: Colors.white),
+            style: AppTypography.kFuturaMedium16.copyWith(color: Colors.white),
           ),
         ],
       ),

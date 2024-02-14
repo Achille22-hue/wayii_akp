@@ -9,6 +9,7 @@ import 'package:wayii/controllers/user_controllers.dart';
 import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/data/constants/app_typography.dart';
+import 'package:wayii/modules/home/home_view.dart';
 import 'package:wayii/widgets/buttons/primary_button.dart';
 
 class SignInView extends StatefulWidget {
@@ -24,6 +25,19 @@ class _SignInViewState extends State<SignInView> {
   final TextEditingController _passwordController = TextEditingController();
   final UserController cc = Get.find<UserController>();
   bool isLoadingdata = false;
+
+  final UserController cs = Get.find<UserController>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (cs.isConnect.value) {
+        Get.to<Widget>(() => const HomeView());
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +79,7 @@ class _SignInViewState extends State<SignInView> {
                       Text(
                         "Connectez-vous",
                         textAlign: TextAlign.right,
-                        style: AppTypography.kSemiBold20
+                        style: AppTypography.kFuturaSemiBold20
                             .copyWith(color: Colors.white),
                       ),
                       SizedBox(width: 10.w),
@@ -118,7 +132,7 @@ class _SignInViewState extends State<SignInView> {
                               child: Text(
                                 'Mot de passe oublié ?',
                                 textAlign: TextAlign.end,
-                                style: AppTypography.kMedium12
+                                style: AppTypography.kFuturaMedium12
                                     .copyWith(color: AppColors.kGrey70),
                               ),
                             ),
@@ -146,7 +160,7 @@ class _SignInViewState extends State<SignInView> {
                             textAlign: TextAlign.center,
                             text: TextSpan(
                               text: 'Vous ne possédez pas de compte? ',
-                              style: AppTypography.kMedium12
+                              style: AppTypography.kFuturaMedium12
                                   .copyWith(color: AppColors.kGrey70),
                               children: [
                                 TextSpan(
@@ -155,7 +169,7 @@ class _SignInViewState extends State<SignInView> {
                                     ..onTap = () {
                                       Get.to<Widget>(() => const SignUpView());
                                     },
-                                  style: AppTypography.kMedium12
+                                  style: AppTypography.kFuturaMedium12
                                       .copyWith(color: AppColors.kPrimary),
                                 ),
                               ],

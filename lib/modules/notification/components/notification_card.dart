@@ -34,7 +34,7 @@ class NotificationCard extends StatelessWidget {
                 children: [
                   Text(
                     notifications['message'],
-                    style: AppTypography.kMedium12
+                    style: AppTypography.kFuturaMedium16
                         .copyWith(color: AppColors.kWhite),
                   ),
                   const SizedBox(
@@ -42,7 +42,7 @@ class NotificationCard extends StatelessWidget {
                   ),
                   Text(
                     notifications['date'],
-                    style: AppTypography.kSemiBold14
+                    style: AppTypography.kFuturaSemiBold14
                         .copyWith(color: AppColors.kWhite),
                   ),
                 ],

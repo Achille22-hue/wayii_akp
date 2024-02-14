@@ -49,7 +49,8 @@ class _CategoryViewState extends State<CategoryView> {
           backgroundColor: Colors.transparent,
           title: Text(
             'Catégories',
-            style: AppTypography.kSemiBold16.copyWith(color: AppColors.kWhite),
+            style: AppTypography.kFuturaSemiBold24
+                .copyWith(color: AppColors.kWhite),
           ),
           actions: [
             GestureDetector(
@@ -67,7 +68,7 @@ class _CategoryViewState extends State<CategoryView> {
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 10.0.w,
+              crossAxisSpacing: 20.0.w,
               mainAxisSpacing: 10.0.w,
             ),
             itemCount: categoriesList.length,

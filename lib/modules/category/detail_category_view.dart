@@ -8,24 +8,24 @@ import 'package:wayii/data/constants/app_typography.dart';
 import 'package:wayii/data/helpers/data.dart';
 import 'package:wayii/modules/events/event_card.dart';
 
-class FavoriteView extends StatefulWidget {
-  const FavoriteView({super.key});
+class DetailCategortyView extends StatefulWidget {
+  const DetailCategortyView({super.key});
 
   @override
-  State<FavoriteView> createState() => _FavoriteViewState();
+  State<DetailCategortyView> createState() => _DetailCategortyViewState();
 }
 
-class _FavoriteViewState extends State<FavoriteView> {
+class _DetailCategortyViewState extends State<DetailCategortyView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kSecondary,
       appBar: AppBar(
         elevation: 0,
-        automaticallyImplyLeading: false,
+        centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Préférences',
+          'Une catégorie',
           style:
               AppTypography.kFuturaSemiBold24.copyWith(color: AppColors.kWhite),
         ),

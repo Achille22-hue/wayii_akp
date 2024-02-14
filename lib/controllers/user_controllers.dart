@@ -1,21 +1,99 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:wayii/auth/otp_validation_view.dart';
 import 'package:wayii/auth/validation_complete_view.dart';
-import 'package:wayii/data/constants/app_colors.dart';
-import 'package:wayii/data/constants/app_typography.dart';
 import 'package:wayii/modules/lendingPage/lending_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wayii/utils/functions_utils.dart';
 
 class UserController extends GetxController {
   late Rx<bool> isConnect = Rx<bool>(false);
   final String url = "https://goudo-wayii.onrender.com/api";
   late Rx<Map> userData = Rx<Map>({});
-  late Rx<String> username = Rx<String>("");
-  late Rx<String> jwt = Rx<String>("");
+  late Rx<String> fullname = Rx<String>("fullname");
+  late Rx<String?> jwt;
+
+  @override
+  void onInit() async {
+    super.onInit();
+    initializeToken();
+  }
+
+  void initializeToken() async {
+    jwt = Rx<String?>(await getToken());
+  }
+
+  Future<void> disconnect() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove("tokenKey");
+      await prefs.remove('token_expiry');
+      isConnect.value = false;
+      userData.value = {};
+      fullname.value = "fullname";
+      jwt.value = "";
+      update();
+      Get.to<Widget>(() => {});
+    } catch (e) {
+      print('Une erreur s\'est produite lors de la déconnexion: $e');
+      FunctionsUtils.pushAlert(
+          400, 'Une erreur s\'est produite lors de la déconnexion.');
+    }
+  }
+
+  Future<void> initializeUserData(token) async {
+    final String userInfoEndpoint = '$url/users/me';
+    try {
+      final response = await http.get(
+        Uri.parse(userInfoEndpoint),
+        headers: {'Authorization': 'Bearer $token'},
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        userData.value = data;
+        fullname.value = data['fullname'];
+        update();
+      } else {
+        final errorMessage = FunctionsUtils.endpointError(response.body);
+        FunctionsUtils.pushAlert(
+            400,
+            errorMessage ??
+                'Une erreur est survenue lors de la récupération des informations utilisateur.');
+      }
+    } catch (e) {
+      print('Une exception s\'est produite lors de la requête: $e');
+      FunctionsUtils.pushAlert(
+          400, 'Une erreur s\'est produite lors de la connexion au serveur.');
+    }
+  }
+
+  static Future<void> saveToken(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final expiryDate = DateTime.now().add(Duration(days: 30));
+    await prefs.setString("tokenKey", token);
+    await prefs.setString('token_expiry', expiryDate.toIso8601String());
+  }
+
+  Future<String?> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final expiryDateString = prefs.getString('token_expiry');
+    if (expiryDateString != null) {
+      final expiryDate = DateTime.parse(expiryDateString);
+      if (DateTime.now().isBefore(expiryDate)) {
+        isConnect.value = true;
+        String? token = prefs.getString("tokenKey");
+        initializeUserData(token);
+        return token;
+      } else {
+        isConnect.value = false;
+        await prefs.remove("tokenKey");
+        await prefs.remove('token_expiry');
+      }
+    }
+    return '';
+  }
 
   Future<void> loginClient(Map<String, dynamic> formData) async {
     final String loginClientEndpoint = '$url/auth/local/';
@@ -26,19 +104,18 @@ class UserController extends GetxController {
       );
       if (response.statusCode == 200) {
         await endpointSucces(response.body);
-        print(response.body);
-        pushAlert(200, "Content de vous revoir $username");
+        FunctionsUtils.pushAlert(200, "Content de vous revoir $fullname");
         Get.to<Widget>(() => const LandingPage());
       } else {
-        dynamic errorMessage = endpointError(response.body);
+        dynamic errorMessage = FunctionsUtils.endpointError(response.body);
         if (errorMessage != null) {
-          pushAlert(400, errorMessage);
+          FunctionsUtils.pushAlert(400, errorMessage);
         } else {
-          pushAlert(400, 'Numéro ou mot de passe incorrect');
+          FunctionsUtils.pushAlert(400, 'Numéro ou mot de passe incorrect');
         }
       }
     } catch (e) {
-      pushAlert(400, 'Une erreur s\'est produite. Réessayez...');
+      FunctionsUtils.pushAlert(400, 'Une erreur s\'est produite. Réessayez...');
     }
   }
 
@@ -50,19 +127,19 @@ class UserController extends GetxController {
         body: formData,
       );
       if (response.statusCode == 200) {
-        endpointSucces(response.body);
-        await pushAlert(200, 'Validation de votre compte $username');
+        await FunctionsUtils.pushAlert(
+            200, 'Validation de votre compte $fullname');
         Get.to<Widget>(() => const OtpValidationView());
       } else {
-        dynamic errorMessage = endpointError(response.body);
+        dynamic errorMessage = FunctionsUtils.endpointError(response.body);
         if (errorMessage != null) {
-          pushAlert(400, errorMessage);
+          FunctionsUtils.pushAlert(400, errorMessage);
         } else {
-          pushAlert(400, 'Erreur lors de l\'inscription');
+          FunctionsUtils.pushAlert(400, 'Erreur lors de l\'inscription');
         }
       }
     } catch (e) {
-      pushAlert(400, 'Une erreur s\'est produite. Réessayez...');
+      FunctionsUtils.pushAlert(400, 'Une erreur s\'est produite. Réessayez...');
     }
   }
 
@@ -74,65 +151,36 @@ class UserController extends GetxController {
         body: {"email": userData.value['email'], "code": otpCode},
       );
       if (response.statusCode == 200) {
-        endpointSucces(response.body);
-        await pushAlert(200, 'Validation du compte effectué avec succès ');
+        FunctionsUtils.pushAlert(
+            200, 'Validation du compte effectué avec succès ');
         Get.to<Widget>(() => const ValidationCompletView());
       } else {
-        dynamic errorMessage = endpointError(response.body);
+        dynamic errorMessage = FunctionsUtils.endpointError(response.body);
         if (errorMessage != null) {
-          pushAlert(400, errorMessage);
+          FunctionsUtils.pushAlert(400, errorMessage);
         } else {
-          pushAlert(400, 'Erreur lors de l\'inscription');
+          FunctionsUtils.pushAlert(400, 'Erreur lors de l\'inscription');
         }
       }
     } catch (e) {
-      pushAlert(400, 'Une erreur s\'est produite. Réessayez...');
+      print(e);
+      FunctionsUtils.pushAlert(400, 'Une erreur s\'est produite. Réessayez...');
     }
   }
 
-  endpointError(responseBody) {
-    Map<String, dynamic> jsonResponse = jsonDecode(responseBody);
-    if (jsonResponse.containsKey('error') &&
-        jsonResponse['error'].containsKey('message')) {
-      String errorMessage = jsonResponse['error']['message'];
-      if (jsonResponse.containsKey('jwt')) {
-        jwt.value = jsonResponse['jwt'];
-      }
-      update();
-      return errorMessage;
-    } else {
-      return null;
-    }
-  }
-
-  endpointSucces(responseBody) {
+  endpointSucces(responseBody) async {
     Map jsonResponse = jsonDecode(responseBody);
     if (jsonResponse.containsKey('user')) {
       Map userInfo = jsonResponse['user'];
+      await saveToken(jsonResponse['jwt']);
       userData.value = userInfo;
-      isConnect.value = true;
-      username.value = userInfo['username'];
+      fullname.value = userInfo['fullname'];
+      jwt.value = await getToken();
       userData.refresh();
       update();
     } else {
       userData.value = {};
       userData.refresh();
     }
-  }
-
-  pushAlert(type, message) {
-    Get.snackbar(
-      '',
-      '',
-      titleText: Text(
-        message.toString(),
-        style: AppTypography.kMedium16.copyWith(color: AppColors.kWhite),
-        textAlign: TextAlign.center,
-      ),
-      backgroundColor: type == 400 ? Colors.red : Colors.green,
-      margin: EdgeInsets.zero,
-      borderRadius: 0,
-      padding: EdgeInsets.only(top: 15.h, bottom: 2.h),
-    );
   }
 }

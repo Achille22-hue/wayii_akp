@@ -20,7 +20,7 @@ class OnboardingCard extends StatelessWidget {
             onboarding.title,
             textAlign: TextAlign.center,
             style:
-                AppTypography.kSemiBold32.copyWith(color: AppColors.kPrimary),
+                AppTypography.kFuturaSemiBold32.copyWith(color: AppColors.kPrimary),
           ),
           const SizedBox(height: 10),
           Padding(
@@ -28,7 +28,8 @@ class OnboardingCard extends StatelessWidget {
             child: Text(
               onboarding.info,
               textAlign: TextAlign.center,
-              style: AppTypography.kMedium14.copyWith(color: AppColors.kWhite),
+              style: AppTypography.kFuturaMedium24
+                  .copyWith(color: AppColors.kWhite),
             ),
           ),
         ],

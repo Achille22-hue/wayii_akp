@@ -59,8 +59,8 @@ class _SignUpViewState extends State<SignUpView> {
                   Text(
                     "Que voulez-vous faire sur Wayii",
                     textAlign: TextAlign.left,
-                    style:
-                        AppTypography.kSemiBold24.copyWith(color: Colors.white),
+                    style: AppTypography.kFuturaSemiBold24
+                        .copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 10.h),
                   Theme(
@@ -84,7 +84,7 @@ class _SignUpViewState extends State<SignUpView> {
                             ),
                             Text(
                               'Acheter des tickets',
-                              style: AppTypography.kMedium16
+                              style: AppTypography.kFuturaMedium16
                                   .copyWith(color: Colors.white),
                             ),
                           ],
@@ -104,7 +104,7 @@ class _SignUpViewState extends State<SignUpView> {
                             ),
                             Text(
                               'Créer des évènements',
-                              style: AppTypography.kMedium16
+                              style: AppTypography.kFuturaMedium16
                                   .copyWith(color: Colors.white),
                             ),
                           ],
@@ -125,7 +125,7 @@ class _SignUpViewState extends State<SignUpView> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: 'Vous possédez déjà un compte? ',
-                      style: AppTypography.kMedium12
+                      style: AppTypography.kFuturaMedium12
                           .copyWith(color: AppColors.kGrey70),
                       children: [
                         TextSpan(
@@ -134,7 +134,7 @@ class _SignUpViewState extends State<SignUpView> {
                             ..onTap = () {
                               Get.to<Widget>(() => const SignInView());
                             },
-                          style: AppTypography.kMedium12
+                          style: AppTypography.kFuturaMedium12
                               .copyWith(color: AppColors.kPrimary),
                         ),
                       ],

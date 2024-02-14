@@ -16,7 +16,7 @@ final List<Map<String, dynamic>> eventsList = [
   },
   {
     'id': '4',
-    'event_name': 'I Want You For U.S. Army',
+    'event_name': 'Japan trends moves',
     'image_event': '',
   }
 ];

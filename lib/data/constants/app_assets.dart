@@ -32,6 +32,11 @@ class AppAssets {
   static String wLeftArrow = 'assets/icons/left_arrow.svg';
   static String wSearchBtn = 'assets/icons/search_btn.svg';
   static String wChillPartyCategory = 'assets/icons/chill_category.svg';
+  static String warrowLeft = 'assets/icons/arrow-left.svg';
+
+  static String wFavorite0 = 'assets/icons/favorite0.svg';
+  static String wToken0 = 'assets/icons/token0.svg';
+  static String wSeparationTiket = 'assets/icons/separation_tiket.svg';
 
   //Icons navigation menu
   static String wHome = 'assets/icons/home.svg';

@@ -33,11 +33,11 @@ class CustomOTPTextField extends StatelessWidget {
         labelStyle: TextStyle(color: AppColors.kPrimary),
       ),
       styles: [
-        AppTypography.kSemiBold24,
-        AppTypography.kSemiBold24,
-        AppTypography.kSemiBold24,
-        AppTypography.kSemiBold24,
-        AppTypography.kSemiBold24,
+        AppTypography.kFuturaSemiBold24,
+        AppTypography.kFuturaSemiBold24,
+        AppTypography.kFuturaSemiBold24,
+        AppTypography.kFuturaSemiBold24,
+        AppTypography.kFuturaSemiBold24,
       ],
       onSubmit: onOTPInput,
     );

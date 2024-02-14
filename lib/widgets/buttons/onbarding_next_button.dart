@@ -64,7 +64,7 @@ class _OnboardingNextButtonState extends State<OnboardingNextButton>
         children: [
           Text(
             buttonText,
-            style: AppTypography.kSemiBold14.copyWith(color: buttonColor),
+            style: AppTypography.kFuturaSemiBold14.copyWith(color: buttonColor),
           ),
           const SizedBox(height: 8.0),
           ScaleTransition(

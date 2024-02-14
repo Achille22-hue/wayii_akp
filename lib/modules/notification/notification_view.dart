@@ -62,7 +62,8 @@ class _NotificationViewState extends State<NotificationView> {
         backgroundColor: Colors.transparent,
         title: Text(
           'Notifications',
-          style: AppTypography.kSemiBold16.copyWith(color: AppColors.kWhite),
+          style:
+              AppTypography.kFuturaMedium24.copyWith(color: AppColors.kWhite),
         ),
       ),
       body: notifications.isEmpty

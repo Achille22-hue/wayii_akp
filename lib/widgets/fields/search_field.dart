@@ -32,7 +32,7 @@ class SearchField extends StatelessWidget {
         filled: true,
         fillColor: AppColors.ksignInputBg,
         hintText: hintText ?? 'Rechercher un évènement',
-        hintStyle: AppTypography.kMedium16
+        hintStyle: AppTypography.kFuturaMedium18
             .copyWith(color: AppColors.ksignInputPlaceholdColor),
         border: InputBorder.none,
         prefixIcon: Padding(

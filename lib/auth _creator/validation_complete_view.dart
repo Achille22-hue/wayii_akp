@@ -58,8 +58,8 @@ class _ValidationCompletCreatorViewState
                   Text(
                     "Validation",
                     textAlign: TextAlign.left,
-                    style:
-                        AppTypography.kSemiBold24.copyWith(color: Colors.white),
+                    style: AppTypography.kFuturaSemiBold24
+                        .copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 20.h),
                   SvgPicture.asset(AppAssets.wValidationClomplete),
@@ -67,8 +67,8 @@ class _ValidationCompletCreatorViewState
                   Text(
                     "Votre inscription a été validé et votre compte est à présent créé",
                     textAlign: TextAlign.left,
-                    style:
-                        AppTypography.kMedium14.copyWith(color: Colors.white),
+                    style: AppTypography.kFuturaMedium24
+                        .copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 22.h),
                   PrimaryButton(

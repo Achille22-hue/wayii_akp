@@ -44,7 +44,8 @@ class _AuthFieldState extends State<AuthField> {
           obscureText: widget.isPassword ? isObscure : false,
           textInputAction: widget.textInputAction,
           keyboardType: widget.keyboardType,
-          style: AppTypography.kMedium14.copyWith(color: AppColors.kWhite),
+          style:
+              AppTypography.kFuturaMedium24.copyWith(color: AppColors.kWhite),
           decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.ksignInputBg,
