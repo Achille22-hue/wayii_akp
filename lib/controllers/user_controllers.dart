@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:wayii/auth/otp_validation_view.dart';
+import 'package:wayii/auth/signin_view.dart';
 import 'package:wayii/auth/validation_complete_view.dart';
 import 'package:wayii/modules/lendingPage/lending_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,7 +13,7 @@ class UserController extends GetxController {
   late Rx<bool> isConnect = Rx<bool>(false);
   final String url = "https://goudo-wayii.onrender.com/api";
   late Rx<Map> userData = Rx<Map>({});
-  late Rx<String> fullname = Rx<String>("fullname");
+  late Rx<String> fullname = Rx<String>("");
   late Rx<String?> jwt;
 
   @override
@@ -32,11 +33,12 @@ class UserController extends GetxController {
       await prefs.remove('token_expiry');
       isConnect.value = false;
       userData.value = {};
-      fullname.value = "fullname";
+      fullname.value = "";
       jwt.value = "";
       update();
-      Get.to<Widget>(() => {});
+      Get.to(() => const SignInView());
     } catch (e) {
+      // ignore: avoid_print
       print('Une erreur s\'est produite lors de la déconnexion: $e');
       FunctionsUtils.pushAlert(
           400, 'Une erreur s\'est produite lors de la déconnexion.');
@@ -44,7 +46,7 @@ class UserController extends GetxController {
   }
 
   Future<void> initializeUserData(token) async {
-    final String userInfoEndpoint = '$url/users/me';
+    final String userInfoEndpoint = '$url/users/me?populate=role';
     try {
       final response = await http.get(
         Uri.parse(userInfoEndpoint),
@@ -63,6 +65,7 @@ class UserController extends GetxController {
                 'Une erreur est survenue lors de la récupération des informations utilisateur.');
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Une exception s\'est produite lors de la requête: $e');
       FunctionsUtils.pushAlert(
           400, 'Une erreur s\'est produite lors de la connexion au serveur.');
@@ -71,7 +74,7 @@ class UserController extends GetxController {
 
   static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    final expiryDate = DateTime.now().add(Duration(days: 30));
+    final expiryDate = DateTime.now().add(const Duration(days: 30));
     await prefs.setString("tokenKey", token);
     await prefs.setString('token_expiry', expiryDate.toIso8601String());
   }

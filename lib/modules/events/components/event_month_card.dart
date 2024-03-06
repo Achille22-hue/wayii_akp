@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/data/constants/app_typography.dart';
@@ -12,7 +11,7 @@ class EventMonthCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-        maxWidth: 400,
+        maxWidth: 400.h,
       ),
       height: 150.h,
       margin: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10),

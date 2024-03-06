@@ -33,7 +33,7 @@ class _SignUpViewState extends State<SignUpView> {
               height: Get.height,
               fit: BoxFit.cover,
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: 50.h),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
               decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class _SignUpViewState extends State<SignUpView> {
                 color: AppColors.kSecondarywithOpacity5,
               ),
               width: Get.width,
-              margin: EdgeInsets.only(top: 491.0.h),
+              margin: EdgeInsets.only(top: 535.0.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -118,14 +118,14 @@ class _SignUpViewState extends State<SignUpView> {
                       Get.to<Widget>(() => const SignAccountCreation());
                     },
                     text: 'Suivant',
-                    fontSize: 20,
+                    fontSize: 20.sp,
                   ),
                   const SizedBox(height: 5),
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: 'Vous possédez déjà un compte? ',
-                      style: AppTypography.kFuturaMedium12
+                      style: AppTypography.kFuturaSemiBold14
                           .copyWith(color: AppColors.kGrey70),
                       children: [
                         TextSpan(
@@ -134,7 +134,7 @@ class _SignUpViewState extends State<SignUpView> {
                             ..onTap = () {
                               Get.to<Widget>(() => const SignInView());
                             },
-                          style: AppTypography.kFuturaMedium12
+                          style: AppTypography.kFuturaSemiBold14
                               .copyWith(color: AppColors.kPrimary),
                         ),
                       ],

@@ -68,7 +68,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
         child: Card(
           elevation: 5,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(100.r),
           ),
           child: Container(
             height: widget.height ?? 55.h,
@@ -80,7 +80,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
             ),
             child: Text(
               widget.text,
-              style: AppTypography.kFuturaSemiBold16.copyWith(
+              style: AppTypography.kFuturaSemiBold24.copyWith(
                 color: widget.color == null ? Colors.black : AppColors.kWhite,
                 fontSize: widget.fontSize,
               ),

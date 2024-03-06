@@ -18,6 +18,7 @@ class AppAssets {
 
   // Images Event.
   static String wEventchillBG = 'assets/images/event1.jpeg';
+  static String wvibes = 'assets/images/vibes.png';
 
   // Icons.
   static String wlogo = 'assets/icons/logo.svg';
@@ -33,6 +34,13 @@ class AppAssets {
   static String wSearchBtn = 'assets/icons/search_btn.svg';
   static String wChillPartyCategory = 'assets/icons/chill_category.svg';
   static String warrowLeft = 'assets/icons/arrow-left.svg';
+  static String emptywishlist = 'assets/icons/emptywishlist.svg';
+  static String emptyticket = 'assets/icons/emptyticket.svg';
+
+  static String theme = 'assets/icons/theme.svg';
+  static String logout = 'assets/icons/logout.svg';
+  static String about = 'assets/icons/about.svg';
+  static String help = 'assets/icons/help.svg';
 
   static String wFavorite0 = 'assets/icons/favorite0.svg';
   static String wToken0 = 'assets/icons/token0.svg';

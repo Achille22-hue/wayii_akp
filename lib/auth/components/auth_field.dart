@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/data/constants/app_typography.dart';
 
@@ -36,7 +37,7 @@ class _AuthFieldState extends State<AuthField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         TextFormField(
           controller: widget.controller,
           validator: widget.validator,
@@ -45,7 +46,7 @@ class _AuthFieldState extends State<AuthField> {
           textInputAction: widget.textInputAction,
           keyboardType: widget.keyboardType,
           style:
-              AppTypography.kFuturaMedium24.copyWith(color: AppColors.kWhite),
+              AppTypography.kFuturaMedium16.copyWith(color: AppColors.kWhite),
           decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.ksignInputBg,
@@ -67,6 +68,12 @@ class _AuthFieldState extends State<AuthField> {
                 : null,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: const BorderSide(
+                color: AppColors.kWhite,
+              ),
             ),
           ),
         ),

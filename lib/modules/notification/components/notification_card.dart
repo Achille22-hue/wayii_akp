@@ -12,51 +12,54 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Card(
-          color: AppColors.kTertiaire,
-          child: ListTile(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 30.h, horizontal: 10.w),
-            leading: Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: SizedBox(
-                height: 40.h,
-                width: 40.w,
-                child: SvgPicture.asset(AppAssets.wNotificationActive),
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5.w),
+      child: Stack(
+        children: [
+          Card(
+            color: AppColors.kTertiaire,
+            child: ListTile(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 25.h, horizontal: 10.w),
+              leading: Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                child: SizedBox(
+                  height: 40.h,
+                  width: 40.w,
+                  child: SvgPicture.asset(AppAssets.wNotificationActive),
+                ),
               ),
-            ),
-            subtitle: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    notifications['message'],
-                    style: AppTypography.kFuturaMedium16
-                        .copyWith(color: AppColors.kWhite),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    notifications['date'],
-                    style: AppTypography.kFuturaSemiBold14
-                        .copyWith(color: AppColors.kWhite),
-                  ),
-                ],
+              subtitle: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      notifications['message'],
+                      style: AppTypography.kFuturaMedium16
+                          .copyWith(color: AppColors.kWhite),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      notifications['date'],
+                      style: AppTypography.kFuturaMedium16
+                          .copyWith(color: AppColors.kWhite),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        notifications['isView'] == "true"
-            ? Positioned(
-                right: 0,
-                child: SvgPicture.asset(AppAssets.wNewNotification),
-              )
-            : Container(),
-      ],
+          notifications['isView'] == "true"
+              ? Positioned(
+                  right: 0,
+                  child: SvgPicture.asset(AppAssets.wNewNotification),
+                )
+              : Container(),
+        ],
+      ),
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/data/constants/app_typography.dart';
-import 'package:wayii/modules/ticket/components/card_ticket.dart';
 import 'package:wayii/modules/ticket/components/ticket_expire.dart';
 import 'package:wayii/modules/ticket/components/ticket_valide.dart';
 

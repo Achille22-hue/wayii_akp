@@ -67,7 +67,7 @@ class _ValidationCompletCreatorViewState
                   Text(
                     "Votre inscription a été validé et votre compte est à présent créé",
                     textAlign: TextAlign.left,
-                    style: AppTypography.kFuturaMedium24
+                    style: AppTypography.kFuturaLight16
                         .copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 22.h),
@@ -76,7 +76,7 @@ class _ValidationCompletCreatorViewState
                       Get.to<Widget>(() => const SignInView());
                     },
                     text: 'Connexion',
-                    fontSize: 20,
+                    fontSize: 20.sp,
                   ),
                 ],
               ),

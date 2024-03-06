@@ -72,7 +72,7 @@ class _OtpValidationViewState extends State<OtpValidationView> {
                               valueColor: AlwaysStoppedAnimation<Color>(
                                   AppColors.kWhite),
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                     ],
                   ),
                   SizedBox(height: 10.h),

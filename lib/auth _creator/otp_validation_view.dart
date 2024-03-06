@@ -43,7 +43,7 @@ class _OtpValidationCreatorViewState extends State<OtpValidationCreatorView> {
                 color: AppColors.kSecondarywithOpacity5,
               ),
               width: Get.width,
-              margin: EdgeInsets.only(top: 491.0.h),
+              margin: EdgeInsets.only(top: 465.0.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -66,7 +66,7 @@ class _OtpValidationCreatorViewState extends State<OtpValidationCreatorView> {
                   Text(
                     "Veuillez finaliser votre inscription en entrant le code envoyé à l’adresse mail c...p@gmail.com",
                     textAlign: TextAlign.left,
-                    style: AppTypography.kFuturaMedium24
+                    style: AppTypography.kFuturaLight20
                         .copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 35.h),
@@ -82,7 +82,7 @@ class _OtpValidationCreatorViewState extends State<OtpValidationCreatorView> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: 'Vous n’avez pas reçu de code? ',
-                      style: AppTypography.kFuturaMedium12
+                      style: AppTypography.kFuturaSemiBold14
                           .copyWith(color: AppColors.kGrey70),
                       children: [
                         TextSpan(
@@ -91,7 +91,7 @@ class _OtpValidationCreatorViewState extends State<OtpValidationCreatorView> {
                             ..onTap = () {
                               Get.to<Widget>(() => const SignInView());
                             },
-                          style: AppTypography.kFuturaMedium12
+                          style: AppTypography.kFuturaSemiBold14
                               .copyWith(color: AppColors.kPrimary),
                         ),
                       ],

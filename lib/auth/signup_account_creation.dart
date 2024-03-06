@@ -80,7 +80,7 @@ class _SignAccountCreationState extends State<SignAccountCreation> {
                               valueColor: AlwaysStoppedAnimation<Color>(
                                   AppColors.kWhite),
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                     ],
                   ),
                   SizedBox(height: 10.h),

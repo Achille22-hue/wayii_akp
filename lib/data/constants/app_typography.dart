@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTypography {
   static TextStyle kFuturaMedium48 = TextStyle(
@@ -67,4 +66,8 @@ class AppTypography {
       fontFamily: "Futura", fontSize: 14.sp, fontWeight: FontWeight.w600);
   static TextStyle kFuturaSemiBold12 = TextStyle(
       fontFamily: "Futura", fontSize: 12.sp, fontWeight: FontWeight.w600);
+
+  // Futura Bold
+  static TextStyle kFuturaBold38 = TextStyle(
+      fontFamily: "Futura", fontSize: 38.sp, fontWeight: FontWeight.w800);
 }

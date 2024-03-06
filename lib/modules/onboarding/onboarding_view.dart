@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wayii/auth/signin_view.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/models/onboarding.dart';
@@ -18,6 +20,12 @@ class OnboardingView extends StatefulWidget {
 class _OnboardingViewState extends State<OnboardingView> {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
+
+  void markFirstTimeUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isFirstTime', false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,18 +57,19 @@ class _OnboardingViewState extends State<OnboardingView> {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               (_currentIndex != onboardingList.length - 1)
                   ? CustomDotsIndicator(
                       dotsCount: onboardingList.length,
                       position: _currentIndex,
                     )
                   : const SizedBox(height: 0),
-              const SizedBox(height: 30),
+              SizedBox(height: 30.h),
               (_currentIndex == onboardingList.length - 1)
                   ? PrimaryButton(
                       onTap: () {
                         if (_currentIndex == onboardingList.length - 1) {
+                          markFirstTimeUser();
                           Get.offAll<Widget>(() => const SignInView());
                         } else {
                           _pageController.nextPage(

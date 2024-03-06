@@ -12,10 +12,10 @@ class TicketExpire extends StatelessWidget {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: const [
-          CardTicket(isValable: true),
-          CardTicket(isValable: true),
-          CardTicket(isValable: true),
-          CardTicket(isValable: true),
+          CardTicket(isValable: false),
+          CardTicket(isValable: false),
+          CardTicket(isValable: false),
+          CardTicket(isValable: false),
         ],
       ),
     );

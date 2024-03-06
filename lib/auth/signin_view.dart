@@ -61,7 +61,7 @@ class _SignInViewState extends State<SignInView> {
                 color: AppColors.kSecondarywithOpacity5,
               ),
               width: Get.width,
-              margin: EdgeInsets.only(top: 475.0.h),
+              margin: EdgeInsets.only(top: 470.0.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -89,7 +89,7 @@ class _SignInViewState extends State<SignInView> {
                               valueColor: AlwaysStoppedAnimation<Color>(
                                   AppColors.kWhite),
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                     ],
                   ),
                   SizedBox(height: 10.h),
@@ -132,7 +132,7 @@ class _SignInViewState extends State<SignInView> {
                               child: Text(
                                 'Mot de passe oublié ?',
                                 textAlign: TextAlign.end,
-                                style: AppTypography.kFuturaMedium12
+                                style: AppTypography.kFuturaSemiBold14
                                     .copyWith(color: AppColors.kGrey70),
                               ),
                             ),
@@ -155,12 +155,12 @@ class _SignInViewState extends State<SignInView> {
                             fontSize: 20.sp,
                             key: const Key('connexionButton'),
                           ),
-                          const SizedBox(height: 5),
+                          SizedBox(height: 3.h),
                           RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
                               text: 'Vous ne possédez pas de compte? ',
-                              style: AppTypography.kFuturaMedium12
+                              style: AppTypography.kFuturaSemiBold14
                                   .copyWith(color: AppColors.kGrey70),
                               children: [
                                 TextSpan(
@@ -169,7 +169,7 @@ class _SignInViewState extends State<SignInView> {
                                     ..onTap = () {
                                       Get.to<Widget>(() => const SignUpView());
                                     },
-                                  style: AppTypography.kFuturaMedium12
+                                  style: AppTypography.kFuturaSemiBold14
                                       .copyWith(color: AppColors.kPrimary),
                                 ),
                               ],

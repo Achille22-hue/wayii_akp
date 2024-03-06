@@ -5,9 +5,14 @@ import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
 import 'package:wayii/data/constants/app_typography.dart';
 
-class EmptyNotification extends StatelessWidget {
-  const EmptyNotification({super.key});
+class EmptyWishlist extends StatefulWidget {
+  const EmptyWishlist({super.key});
 
+  @override
+  State<EmptyWishlist> createState() => _EmptyWishlistState();
+}
+
+class _EmptyWishlistState extends State<EmptyWishlist> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +22,7 @@ class EmptyNotification extends StatelessWidget {
           alignment: Alignment.center,
           padding: EdgeInsets.all(15.h),
           child: SvgPicture.asset(
-            AppAssets.wEmptyNotification,
+            AppAssets.emptywishlist,
             height: 100.h,
             width: 100.w,
             fit: BoxFit.cover,
@@ -26,7 +31,7 @@ class EmptyNotification extends StatelessWidget {
         SizedBox(height: 10.h),
         Center(
           child: Text(
-            'Aucune Notifications',
+            'Aucune Préférences',
             style: AppTypography.kFuturaSemiBold20
                 .copyWith(color: AppColors.kWhite),
             textAlign: TextAlign.center,
@@ -36,7 +41,7 @@ class EmptyNotification extends StatelessWidget {
           width: 300.h,
           child: Center(
             child: Text(
-              'Patientez, elles seront bientôt dans votre box',
+              'Rendez-vous sur les différents évènements pour les ajouter',
               style: AppTypography.kFuturaLight16
                   .copyWith(color: AppColors.kWhite),
               textAlign: TextAlign.center,

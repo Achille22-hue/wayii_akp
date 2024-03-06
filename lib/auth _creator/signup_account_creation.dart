@@ -47,7 +47,7 @@ class _SignAccountCreationCreatorState
                 color: AppColors.kSecondarywithOpacity5,
               ),
               width: Get.width,
-              margin: EdgeInsets.only(top: 267.0.h),
+              margin: EdgeInsets.only(top: 230.0.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,8 +63,8 @@ class _SignAccountCreationCreatorState
                   Text(
                     "Inscrivez-vous",
                     textAlign: TextAlign.right,
-                    style:
-                        AppTypography.kFuturaSemiBold20.copyWith(color: Colors.white),
+                    style: AppTypography.kFuturaSemiBold20
+                        .copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 10.h),
                   Form(
@@ -160,7 +160,7 @@ class _SignAccountCreationCreatorState
                               child: Text(
                                 'Mot de passe oublié ?',
                                 textAlign: TextAlign.end,
-                                style: AppTypography.kFuturaMedium12
+                                style: AppTypography.kFuturaSemiBold16
                                     .copyWith(color: AppColors.kGrey70),
                               ),
                             ),
@@ -179,7 +179,7 @@ class _SignAccountCreationCreatorState
                             textAlign: TextAlign.center,
                             text: TextSpan(
                               text: 'Vous possédez déjà un compte? ',
-                              style: AppTypography.kFuturaMedium12
+                              style: AppTypography.kFuturaSemiBold14
                                   .copyWith(color: AppColors.kGrey70),
                               children: [
                                 TextSpan(
@@ -188,7 +188,7 @@ class _SignAccountCreationCreatorState
                                     ..onTap = () {
                                       Get.to<Widget>(() => const SignInView());
                                     },
-                                  style: AppTypography.kFuturaMedium12
+                                  style: AppTypography.kFuturaSemiBold14
                                       .copyWith(color: AppColors.kPrimary),
                                 ),
                               ],

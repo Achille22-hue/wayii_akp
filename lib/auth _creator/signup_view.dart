@@ -43,7 +43,7 @@ class _SignUpCreatorViewState extends State<SignUpCreatorView> {
                 color: AppColors.kSecondarywithOpacity5,
               ),
               width: Get.width,
-              margin: EdgeInsets.only(top: 491.0.h),
+              margin: EdgeInsets.only(top: 530.0.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -118,14 +118,14 @@ class _SignUpCreatorViewState extends State<SignUpCreatorView> {
                       Get.to<Widget>(() => const SignAccountCreationCreator());
                     },
                     text: 'Suivant',
-                    fontSize: 20,
+                    fontSize: 20.sp,
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5.h),
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: 'Vous possédez déjà un compte? ',
-                      style: AppTypography.kFuturaMedium12
+                      style: AppTypography.kFuturaSemiBold14
                           .copyWith(color: AppColors.kGrey70),
                       children: [
                         TextSpan(
@@ -134,7 +134,7 @@ class _SignUpCreatorViewState extends State<SignUpCreatorView> {
                             ..onTap = () {
                               Get.to<Widget>(() => const SignInView());
                             },
-                          style: AppTypography.kFuturaMedium12
+                          style: AppTypography.kFuturaSemiBold14
                               .copyWith(color: AppColors.kPrimary),
                         ),
                       ],

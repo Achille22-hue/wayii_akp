@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wayii/auth/signin_view.dart';
 import 'package:wayii/controllers/user_controllers.dart';
 import 'package:wayii/data/constants/app_assets.dart';
 import 'package:wayii/data/constants/app_colors.dart';
@@ -17,21 +19,36 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   final UserController cs = Get.find<UserController>();
+  bool isFirstTimeUser = true;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    loadAssetsAndNavigate();
+    precacheImages();
   }
 
-  Future<void> loadAssetsAndNavigate() async {
-    await precacheImages();
-    Future.delayed(const Duration(seconds: 5), () {
-      if (cs.isConnect.value) {
-        Get.to<Widget>(() => const LandingPage());
-      } else {
-        Get.offAll<Widget>(() => const OnboardingView());
-      }
+  @override
+  void initState() {
+    super.initState();
+    checkFirstTimeUser();
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        if (isFirstTimeUser) {
+          Get.to<Widget>(() => const OnboardingView());
+        } else {
+          cs.isConnect.value
+              ? Get.offAll<Widget>(() => const LandingPage())
+              : Get.to<Widget>(() => const SignInView());
+        }
+      });
+    });
+  }
+
+  Future<void> checkFirstTimeUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+    setState(() {
+      isFirstTimeUser = isFirstTime;
     });
   }
 

@@ -60,7 +60,7 @@ class _ProfilViewState extends State<ProfilView> {
               ),
             ),
             SizedBox(
-              height: 10.h,
+              height: 7.h,
             ),
             Text(
               cc.fullname.value.toString(),
@@ -71,12 +71,14 @@ class _ProfilViewState extends State<ProfilView> {
             SizedBox(
               height: 2.h,
             ),
-            Text(
-              cc.userData.value['email'] ?? 'Loading..',
-              style: AppTypography.kFuturaLight16.copyWith(
-                color: AppColors.kWhite,
-              ),
-            ),
+            cc.userData.value['email'] != null
+                ? Text(
+                    cc.userData.value['email'] ?? '',
+                    style: AppTypography.kFuturaLight16.copyWith(
+                      color: AppColors.kWhite,
+                    ),
+                  )
+                : SizedBox(),
             SizedBox(
               height: 50.h,
             ),
@@ -90,20 +92,22 @@ class _ProfilViewState extends State<ProfilView> {
                 CardSetting(
                   onTap: () => {},
                   title: "Aide et Support client",
-                  icon: AppAssets.wNotificationIcon,
+                  icon: AppAssets.help,
                 ),
                 CardSetting(
                   onTap: () => {},
                   title: "A propos de Wayii",
-                  icon: AppAssets.wNotificationIcon,
+                  icon: AppAssets.about,
                 ),
               ],
             ),
             const Spacer(),
             CardSetting(
-              onTap: () => {},
+              onTap: () => {
+                cc.disconnect(),
+              },
               title: "Déconnexion",
-              icon: AppAssets.wNotificationIcon,
+              icon: AppAssets.logout,
               dec: false,
             ),
             SizedBox(
